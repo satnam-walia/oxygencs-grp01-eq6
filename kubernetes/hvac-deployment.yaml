@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hvac-controller
+  labels:
+    app: hvac-controller
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hvac-controller
+  template:
+    metadata:
+      labels:
+        app: hvac-controller
+    spec:
+      containers:
+      - name: hvac-controller
+        image: your-docker-image
+        ports:
+        - containerPort: 80
+        envFrom:
+        - configMapRef:
+            name: hvac-config
+        - secretRef:
+            name: hvac-secrets

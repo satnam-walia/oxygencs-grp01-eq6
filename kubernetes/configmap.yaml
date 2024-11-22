@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hvac-config
+data:
+  T_MAX: "25"
+  T_MIN: "18"
